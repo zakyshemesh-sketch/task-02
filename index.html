@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corpus: The Client Said · צחי שמש</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&family=Heebo:wght@300;400;500&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f5f0; --ink:#1d1b18; --muted:#7a746b; --line:#d9d4ca; --plate:#ece8df;
+    --serif:"Frank Ruhl Libre",serif; --sans:"Heebo",sans-serif; --latin:"EB Garamond",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding-left:32px;padding-right:32px}
+  .narrow{max-width:680px}
+  .en{font-family:var(--latin);font-style:italic;direction:ltr;unicode-bidi:isolate}
+  .label{font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+  hr{border:0;border-top:1px solid var(--line);margin:0}
+
+  header.top{padding:28px 0;display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--muted)}
+  .cover{padding-top:min(14vh,140px);padding-bottom:min(12vh,120px)}
+  .cover h1{font-family:var(--latin);font-weight:400;font-size:clamp(44px,7vw,92px);line-height:1.02;direction:ltr;text-align:right;letter-spacing:-.01em}
+  .cover h1 i{color:var(--muted)}
+  .cover .sub{font-family:var(--serif);font-size:24px;margin-top:22px}
+  .cover .meta{margin-top:44px;display:grid;grid-template-columns:repeat(3,auto);gap:8px 48px;justify-content:start;font-size:14px;color:var(--muted)}
+  .cover .meta b{display:block;color:var(--ink);font-weight:400}
+
+  section{padding:96px 0}
+  .sec-head{display:grid;grid-template-columns:120px 1fr;gap:32px;margin-bottom:48px;align-items:baseline}
+  .sec-head .num{font-family:var(--latin);font-size:15px;color:var(--muted)}
+  .sec-head h2{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.2}
+  .body{display:grid;grid-template-columns:120px 1fr;gap:32px}
+  .body p{margin-bottom:1.1em}
+  .body h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:1.6em 0 .4em}
+
+  .original{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  figure.work{background:var(--plate);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  figure.work img{width:100%;height:100%;object-fit:cover;display:block}
+  figure.work .missing{padding:32px;text-align:center;color:var(--muted);font-size:14px}
+  figcaption,.cap{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.55}
+
+  blockquote{border-right:1px solid var(--ink);padding:6px 22px 6px 0;margin:28px 0;font-family:var(--latin);font-size:26px;line-height:1.35;direction:ltr;text-align:right}
+  blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-size:13px;color:var(--muted);margin-top:10px;direction:rtl}
+
+  .method{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:28px}
+  .method div{background:var(--paper);padding:22px}
+  .method b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;margin-bottom:6px}
+  .method span{font-size:14px;color:var(--muted);line-height:1.6}
+
+  .entry{padding:88px 0;border-top:1px solid var(--line)}
+  .entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+  .entry-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(48px,6vw,76px);line-height:1}
+  .entry-head .tomb{text-align:left;font-size:14px;color:var(--muted);line-height:1.6}
+  .plates{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .plate img{width:100%;display:block;aspect-ratio:1;object-fit:cover;background:var(--plate)}
+  .plate .cap b{color:var(--ink);font-weight:400}
+  .finding{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px}
+  .finding p{font-size:15.5px;line-height:1.7}
+  details{margin-top:36px;border-top:1px solid var(--line)}
+  summary{cursor:pointer;list-style:none;padding:16px 0;font-size:14px;color:var(--muted);display:flex;justify-content:space-between}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:var(--latin);font-size:20px;line-height:1}
+  details[open] summary::after{content:"−"}
+  .sets{display:grid;gap:24px;padding-bottom:12px}
+  .sets img{width:100%;display:block}
+  .note{margin-top:32px;display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center;background:var(--plate);padding:20px}
+  .note img{width:100%;display:block}
+  .note p{font-size:14.5px;line-height:1.65}
+
+  .answer{font-family:var(--serif);font-size:24px;line-height:1.6;font-weight:300}
+  footer{padding:64px 0 80px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+  footer a{color:inherit}
+
+  @media (max-width:760px){
+    .wrap{padding-left:20px;padding-right:20px}
+    .sec-head,.body{grid-template-columns:1fr;gap:8px}
+    .original,.plates,.finding,.note{grid-template-columns:1fr}
+    .method{grid-template-columns:1fr}
+    .cover .meta{grid-template-columns:1fr 1fr}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <span>עיצוב בעזרת בינה מלאכותית · HIT · M.Des</span>
+    <span>משימה 2 · המרחב הלטנטי</span>
+  </header>
+</div>
+<hr>
+
+<div class="wrap cover">
+  <h1>Corpus: <i>The Client Said</i></h1>
+  <p class="sub">שמונה הזיות על ארבע מילים שלקוחות אומרים למעצב</p>
+  <div class="meta">
+    <div>יצירה<b>צחי שמש</b></div>
+    <div>בעקבות<b><span class="en">Trevor Paglen</span>, 2017</b></div>
+    <div>שנה<b>2026</b></div>
+  </div>
+</div>
+<hr>
+
+<!-- 01 ORIGINAL WORK -->
+<section class="wrap" id="original">
+  <div class="sec-head"><span class="num">01</span><h2>העבודה המקורית</h2></div>
+  <div class="original">
+    <figure class="work">
+      <img src="img/paglen.jpg" alt="Trevor Paglen, Vampire (Corpus: Monsters of Capitalism), Adversarially Evolved Hallucination, 2017"
+           onerror="this.outerHTML='<div class=&quot;missing&quot;>Trevor Paglen<br>Vampire (Corpus: Monsters of Capitalism)<br><a href=&quot;https://paglen.studio/2020/04/09/hallucinations/&quot;>לצפייה בעבודה באתר האמן</a></div>'">
+    </figure>
+    <div>
+      <p class="label">Trevor Paglen</p>
+      <h3 style="font-family:var(--latin);font-weight:400;font-size:30px;line-height:1.2;direction:ltr;text-align:right;margin:8px 0 16px"><i>Adversarially Evolved Hallucinations</i></h3>
+      <p style="margin-bottom:1em">סדרה, 2017 ואילך. הדפסות דיי־סבלימציה.</p>
+      <p>פגלן בנה סטים של אימון לפי טקסונומיות "לא שימושיות" מספרות, פסיכואנליזה ופולקלור, ולימד זוג רשתות GAN לזהות אותן ולייצר אותן. כל דימוי נושא שם של אובייקט ובסוגריים את הקורפוס שממנו נולד.</p>
+      <p class="cap">בתמונה: <span class="en">Vampire (Corpus: Monsters of Capitalism)</span>, 2017. באדיבות האמן.</p>
+    </div>
+  </div>
+</section>
+<hr>
+
+<!-- 02 RESPONSE -->
+<section class="wrap" id="response">
+  <div class="sec-head"><span class="num">02</span><h2>תגובה</h2></div>
+  <div class="body"><span></span>
+    <div class="narrow">
+      <p>בסדרה, פגלן בונה ארכיונים שאין להם שימוש: "מפלצות הקפיטליזם", "פירוש החלומות", "אותות ומופתים". שתי רשתות לומדות לזהות את הקטגוריות ולייצר אותן, עד שנוצר דימוי שאין לו מקור במציאות, אבל המכונה "מאמינה" שהוא ערפד או קשת.</p>
+      <h3>הארכיון ומה שחסר בו</h3>
+      <p>אלפי תמונות שפגלן עצמו בחר וסיווג. מה שחסר הוא כל מה שמחוץ לספרייה שלו, שרובה קאנון מערבי: ההזיה רחבה רק כמו המדף שממנו נלקחה.</p>
+      <h3>מה המרחב חושף, ומה הוא מעלים</h3>
+      <p>הוא חושף שכל קטגוריה היא החלטה של מישהו; "ערפד" ו"בננה" הן הסכמה, לא עובדה.</p>
+      <blockquote>“Every training set and every model contains a worldview.”<cite>Trevor Paglen, על הסדרה Evolved Hallucinations</cite></blockquote>
+      <p>הוא מעלים את הרפרנט, ואת עשרות אלפי התוצרים שנפסלו בדרך לכל הדפסה.</p>
+      <h3>אסטרטגיה</h3>
+      <p>בשלב הדאטה זהו <b style="font-weight:500">סירוב</b> לקטגוריות ה"שימושיות" של שוק ושיטור. בשלב הפלט זהו <b style="font-weight:500">גליץ'</b>: הטעות המתמשכת של המכונה היא היצירה.</p>
+    </div>
+  </div>
+</section>
+<hr>
+
+<!-- 03 THE WORK -->
+<section class="wrap" id="work">
+  <div class="sec-head"><span class="num">03</span><h2>היצירה</h2></div>
+  <div class="body"><span></span>
+    <div class="narrow">
+      <p>פגלן המציא קורפוסים. אני לקחתי קורפוס שכבר קיים, ושאני שומע בכל פגישה ראשונה כמעצב פנים: המילים שלקוחות משתמשים בהן כדי לתאר את הבית שהם רוצים. "חמים". "נקי". "יוקרתי". "כמו במלון".</p>
+      <p>לכל מילה נוצרו שני סטים של 30 תמונות, וכל סט חושב לממוצע פיקסלים אחד. מה שחוזר נשאר חד, מה שמשתנה נמחק. ההזיה היא המרכז של המרחב הלטנטי, כשהוא הופך לגלוי.</p>
+    </div>
+  </div>
+  <div class="method">
+    <div><b>המכונה</b><span>הפרומפט החשוף, 30 פעמים:<br><span class="en">A living room that feels ___.</span><br>המכונה בוחרת לבד מה "מתאים להגדרה".</span></div>
+    <div><b>ישראלי לפי תיאור</b><span>אותה מילה, בתוך דירה ישראלית מתוארת (תקרת טיח, תריס אלומיניום, מזגן מפוצל), דרך חמישה צירים שהגדרתי כמעצב, 6 תמונות לכל ציר.</span></div>
+    <div><b>המהלך והכלים</b><span>"הממוצע" ו"מערכת סיווג משלכם".<br>Flux Dev דרך Magnific לייצור; Python (OpenCV, NumPy) למיצוע. עיבוד: הבהרה ורוויה ×1.75, זהים לכל ההזיות.</span></div>
+  </div>
+</section>
+
+<!-- ENTRIES -->
+<div class="wrap">
+
+  <article class="entry" id="warm">
+    <div class="entry-head">
+      <h3>חמים</h3>
+      <div class="tomb"><span class="en">Warm (Corpus: The Client Said)</span><br>Hallucination, 2026 · 2 × 30 images</div>
+    </div>
+    <div class="plates">
+      <figure class="plate"><img src="img/warm-machine.jpg" alt="ההזיה של המכונה למילה חמים" loading="lazy"><figcaption class="cap"><b>המכונה</b> · ממוצע של 30</figcaption></figure>
+      <figure class="plate"><img src="img/warm-israeli.jpg" alt="ההזיה הישראלית למילה חמים" loading="lazy"><figcaption class="cap"><b>ישראלי לפי תיאור</b> · ממוצע של 30</figcaption></figure>
+    </div>
+    <div class="finding">
+      <p>בקתה צפון־אירופאית: תקרת עץ, ספה בז', אח בוערת בחצי מהתמונות, יער מאחורי החלון. אף אדם.</p>
+      <p>מאוורר תקרה, אריחים ותריס, וגם רדיאטור, ב־19 מתוך 30 תמונות, למרות שבדירות ישראליות כמעט אין כאלה. ההטיה האירופאית נשארת גם כשמתארים לה את הדירה.</p>
+    </div>
+    <div class="note">
+      <img src="img/warm-israeli-by-word.jpg" alt="ההזיה כשנכתבה רק המילה ישראלי" loading="lazy">
+      <p><b style="font-weight:500">הערת שיטה.</b> בניסוי הראשון כתבתי רק את המילה "ישראלי". המכונה החזירה את אותה בקתה עם אח, ו"דירה ישראלית ישנה" יצאה עם רדיאטורים ותמונה של מלאך נוצרי. רק תיאור פיזי של הדירה הזיז אותה.</p>
+    </div>
+    <details><summary>סטי האימון</summary>
+      <div class="sets">
+        <figure><img src="img/warm-machine-set.jpg" alt="" loading="lazy"><figcaption class="cap">המכונה · 30 תמונות</figcaption></figure>
+        <figure><img src="img/warm-israeli-set.jpg" alt="" loading="lazy"><figcaption class="cap">ישראלי לפי תיאור · חומר, אור, אנשים, זיכרון, אקלים</figcaption></figure>
+      </div>
+    </details>
+  </article>
+
+  <article class="entry" id="clean">
+    <div class="entry-head">
+      <h3>נקי</h3>
+      <div class="tomb"><span class="en">Clean (Corpus: The Client Said)</span><br>Hallucination, 2026 · 2 × 30 images</div>
+    </div>
+    <div class="plates">
+      <figure class="plate"><img src="img/clean-machine.jpg" alt="ההזיה של המכונה למילה נקי" loading="lazy"><figcaption class="cap"><b>המכונה</b> · ממוצע של 30</figcaption></figure>
+      <figure class="plate"><img src="img/clean-israeli.jpg" alt="ההזיה הישראלית למילה נקי" loading="lazy"><figcaption class="cap"><b>ישראלי לפי תיאור</b> · ממוצע של 30</figcaption></figure>
+    </div>
+    <div class="finding">
+      <p>חדר מבוים לצילום: ספת L בז', שני עציצים סימטריים, ובכ־12 תמונות מסגרת ריקה על הקיר. נקי הוא מקום שאין בו על מה להסתכל.</p>
+      <p>חצי מהתמונות הן חדר ריק לגמרי, כמו מודעת השכרה. נקי וישראלי יחד פירושם שאין פה אף אחד. היוצא מן הכלל: ספונג'ה. מגב, סמרטוט ורצפה רטובה, התמונות היחידות שבהן נקי הוא פעולה של מישהו.</p>
+    </div>
+    <details><summary>סטי האימון</summary>
+      <div class="sets">
+        <figure><img src="img/clean-machine-set.jpg" alt="" loading="lazy"><figcaption class="cap">המכונה · 30 תמונות</figcaption></figure>
+        <figure><img src="img/clean-israeli-set.jpg" alt="" loading="lazy"><figcaption class="cap">ישראלי לפי תיאור · חומר, סדר, אור, ספונג'ה, נקי עם חיים</figcaption></figure>
+      </div>
+    </details>
+  </article>
+
+  <article class="entry" id="luxurious">
+    <div class="entry-head">
+      <h3>יוקרתי</h3>
+      <div class="tomb"><span class="en">Luxurious (Corpus: The Client Said)</span><br>Hallucination, 2026 · 2 × 30 images</div>
+    </div>
+    <div class="plates">
+      <figure class="plate"><img src="img/luxurious-machine.jpg" alt="ההזיה של המכונה למילה יוקרתי" loading="lazy"><figcaption class="cap"><b>המכונה</b> · ממוצע של 30</figcaption></figure>
+      <figure class="plate"><img src="img/luxurious-israeli.jpg" alt="ההזיה הישראלית למילה יוקרתי" loading="lazy"><figcaption class="cap"><b>ישראלי לפי תיאור</b> · ממוצע של 30</figcaption></figure>
+    </div>
+    <div class="finding">
+      <p>לא שיש ולא זהב: בז' שקט, שולחן עגול כהה, ותקרה מונמכת עם פס לד שנשאר חד בתוך הממוצע. יוקרה, לפי המכונה, היא תאורה נסתרת.</p>
+      <p>"דירת קבלן" יצאה מדויקת להפליא: קיר טלוויזיה בחיפוי שיש, גבס עם לד, פורצלן מבריק. שש תמונות כמעט זהות. את זה המכונה מכירה היטב. הפס הכחול באמצע הוא הים, מהפנטהאוז ומהווילה.</p>
+    </div>
+    <details><summary>סטי האימון</summary>
+      <div class="sets">
+        <figure><img src="img/luxurious-machine-set.jpg" alt="" loading="lazy"><figcaption class="cap">המכונה · 30 תמונות</figcaption></figure>
+        <figure><img src="img/luxurious-israeli-set.jpg" alt="" loading="lazy"><figcaption class="cap">ישראלי לפי תיאור · שיש ופליז, פנטהאוז, דירת קבלן, וילה בהרצליה, תל אביב של שנות ה־30</figcaption></figure>
+      </div>
+    </details>
+  </article>
+
+  <article class="entry" id="hotel">
+    <div class="entry-head">
+      <h3>כמו במלון</h3>
+      <div class="tomb"><span class="en">Like a Hotel (Corpus: The Client Said)</span><br>Hallucination, 2026 · 30 + 28 images</div>
+    </div>
+    <div class="plates">
+      <figure class="plate"><img src="img/hotel-machine.jpg" alt="ההזיה של המכונה לביטוי כמו במלון" loading="lazy"><figcaption class="cap"><b>המכונה</b> · ממוצע של 30</figcaption></figure>
+      <figure class="plate"><img src="img/hotel-israeli.jpg" alt="ההזיה הישראלית לביטוי כמו במלון" loading="lazy"><figcaption class="cap"><b>ישראלי לפי תיאור</b> · ממוצע של 28</figcaption></figure>
+    </div>
+    <div class="finding">
+      <p>כמעט זהה ל"יוקרתי": אותה ספה, אותו שולחן, אותה מסגרת אור. ההבדל היחיד הוא נוף של מגדלים בחלון. בשביל המכונה, מלון ויוקרה הן מילה אחת.</p>
+      <p>החדר האמין ביותר בכל הפרויקט הוא "חדר מלון רגיל באמת": מוקט, מזגן מתחת לחלון, מיני בר. את החדר הזה המכונה ראתה אלפי פעמים. אילת, ים המלח והצימר בגליל נמסים לחלון אחד בהיר עם אופק.</p>
+    </div>
+    <details><summary>סטי האימון</summary>
+      <div class="sets">
+        <figure><img src="img/hotel-machine-set.jpg" alt="" loading="lazy"><figcaption class="cap">המכונה · 30 תמונות</figcaption></figure>
+        <figure><img src="img/hotel-israeli-set.jpg" alt="" loading="lazy"><figcaption class="cap">ישראלי לפי תיאור · אילת, בוטיק בתל אביב, ים המלח, חדר מלון רגיל, צימר בגליל</figcaption></figure>
+      </div>
+    </details>
+  </article>
+
+</div>
+<hr>
+
+<!-- 04 ANSWER -->
+<section class="wrap" id="answer">
+  <div class="sec-head"><span class="num">04</span><h2>במה היצירה עונה לעבודה</h2></div>
+  <div class="body"><span></span>
+    <p class="answer narrow">פגלן בנה קורפוסים לא רציונליים כדי לגרום למכונה להזות את מה שאינו קיים. אני משתמש בקורפוס הכי יומיומי שיש, המילים של הלקוחות, ומראה שהמכונה כבר הוזה אותו: היא מצמצמת כל מילה לאותו חדר בז' בלי אנשים. וגם כשמתארים לה דירה ישראלית במפורש, היא משאירה בה רדיאטור. תפיסת העולם שפגלן הצביע עליה כבר לא נמצאת בארכיון של אמן; היא נכנסת לבריף, ומשם לבתים של אנשים.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    צחי שמש · עיצוב בעזרת בינה מלאכותית, HIT, 2026 ·
+    מקורות: <a href="https://paglen.studio/2020/04/09/hallucinations/">Paglen, Hallucinations</a> ·
+    Antonio Somaini, “Latent Spaces: AI, Art, and the Archive”, <span class="en">October</span> 196 (2026)
+  </div>
+</footer>
+
+</body>
+</html>
