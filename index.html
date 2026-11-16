@@ -113,9 +113,9 @@ section{position:relative}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .pair figure{position:relative}
 .pair figcaption{position:absolute;top:14px;right:14px;background:var(--paper);padding:5px 10px 4px;font-size:12px;font-weight:800;letter-spacing:.02em}
-.word-name{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:clamp(28px,3.2vw,48px) var(--m) clamp(28px,3vw,44px);border-bottom:1px solid var(--line)}
+.word-name{display:flex;align-items:baseline;justify-content:flex-start;flex-wrap:wrap;gap:clamp(20px,2.6vw,44px);padding:clamp(28px,3.2vw,48px) var(--m) clamp(28px,3vw,44px);border-bottom:1px solid var(--line)}
 .word-name h3{font-size:clamp(64px,11vw,184px);line-height:.9;letter-spacing:-.04em;font-weight:800}
-.word-name .gloss{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:left}
+.word-name .gloss{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:right}
 .word-name .gloss .en{font-size:clamp(26px,3.4vw,54px);font-weight:300;letter-spacing:-.04em;text-transform:uppercase;line-height:1}
 .halves{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .half{padding:clamp(24px,2.6vw,40px) var(--m) 0}
