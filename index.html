@@ -4,423 +4,404 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Corpus: The Client Said · צחי שמש</title>
-<meta name="description" content="מילון קטן של מה שלקוחות אומרים למעצב, כפי שהמכונה מבינה אותו. תגובה לעבודה של Trevor Paglen.">
-<link rel="preload" href="fonts/frank-ruhl-libre-hebrew-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="description" content="תגובה לעבודה Adversarially Evolved Hallucinations של Trevor Paglen. ארבע מילים שלקוחות אומרים למעצב פנים, כפי שהמכונה מבינה אותן.">
+<link rel="preload" href="fonts/noto-sans-hebrew-hebrew-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face{font-family:"Frank";font-weight:300;font-display:swap;src:url(fonts/frank-ruhl-libre-hebrew-300-normal.woff2) format("woff2");unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
-@font-face{font-family:"Frank";font-weight:400;font-display:swap;src:url(fonts/frank-ruhl-libre-hebrew-400-normal.woff2) format("woff2");unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
-@font-face{font-family:"Frank";font-weight:500;font-display:swap;src:url(fonts/frank-ruhl-libre-hebrew-500-normal.woff2) format("woff2");unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
-@font-face{font-family:"Frank";font-weight:700;font-display:swap;src:url(fonts/frank-ruhl-libre-hebrew-700-normal.woff2) format("woff2");unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
-@font-face{font-family:"Frank";font-weight:300;font-display:swap;src:url(fonts/frank-ruhl-libre-latin-300-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212}
-@font-face{font-family:"Frank";font-weight:400;font-display:swap;src:url(fonts/frank-ruhl-libre-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212}
-@font-face{font-family:"Frank";font-weight:500;font-display:swap;src:url(fonts/frank-ruhl-libre-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212}
-@font-face{font-family:"Frank";font-weight:700;font-display:swap;src:url(fonts/frank-ruhl-libre-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212}
-@font-face{font-family:"Plex Mono";font-weight:400;font-display:swap;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-weight:300;font-display:swap;src:url(fonts/inter-latin-300-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-weight:800;font-display:swap;src:url(fonts/inter-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"Noto Sans Hebrew";font-weight:300;font-display:swap;src:url(fonts/noto-sans-hebrew-hebrew-300-normal.woff2) format("woff2")}
+@font-face{font-family:"Noto Sans Hebrew";font-weight:400;font-display:swap;src:url(fonts/noto-sans-hebrew-hebrew-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Noto Sans Hebrew";font-weight:700;font-display:swap;src:url(fonts/noto-sans-hebrew-hebrew-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Noto Sans Hebrew";font-weight:800;font-display:swap;src:url(fonts/noto-sans-hebrew-hebrew-800-normal.woff2) format("woff2")}
 
 :root{
-  --paper:#ffffff;
-  --ink:#141210;
-  --graphite:#5e5952;
-  --rule:#e6e3de;
-  --plate:#f2f0ec;
-  --umber:#614a35;           /* the colour all four machine hallucinations share */
-  --serif:"Frank","Frank Ruhl Libre",Georgia,serif;
-  --mono:"Plex Mono",ui-monospace,monospace;
-  --page:1120px;
-  --measure:600px;
-  --gutter:clamp(20px,5vw,56px);
-  --ease:cubic-bezier(.16,1,.3,1);
+  --paper:#fff;
+  --ink:#0d0d0d;
+  --grey:#6b6b6b;
+  --bracket:#d9d9d9;
+  --line:#ececec;
+  --m:clamp(20px,4.2vw,64px);      /* page margin, the one edge everything hangs from */
+  --gap:clamp(20px,2.4vw,36px);
+  --font:"Inter","Noto Sans Hebrew",system-ui,sans-serif;
 }
-*,*::before,*::after{box-sizing:border-box}
-*{margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-kerning:normal}
-::selection{background:var(--umber);color:#fff}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;text-decoration-color:#bdb7ae}
-a:hover{text-decoration-color:var(--ink)}
-:focus-visible{outline:2px solid var(--umber);outline-offset:3px}
-bdi{unicode-bidi:isolate}
-.mono{font-family:var(--mono);font-size:.78em;letter-spacing:0}
-/* English blocks read LTR but hang from the same right edge as the Hebrew */
-[dir="ltr"].block{text-align:right}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.7;font-weight:400;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:auto}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+[dir="ltr"]{unicode-bidi:isolate}
+.r{text-align:right}                       /* LTR lines that still hang from the right edge */
 
-.page{max-width:calc(var(--page) + 2*var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
-.measure{max-width:var(--measure)}
-.rule{border-top:1px solid var(--rule)}
+/* ---------- recurring marks, taken from the gallery deck ---------- */
+.dash{display:block;width:26px;height:6px;background:var(--ink);margin-bottom:14px}
+.bracket{position:absolute;width:clamp(40px,4vw,60px);height:clamp(40px,4vw,60px);pointer-events:none}
+.bracket::before,.bracket::after{content:"";position:absolute;background:var(--bracket)}
+.bracket::before{inset-inline:0;height:14px}
+.bracket::after{inset-block:0;width:14px}
+.b-tr{top:0;right:0}.b-tr::before{top:0}.b-tr::after{right:0}
+.b-tl{top:0;left:0}.b-tl::before{top:0}.b-tl::after{left:0}
+.b-br{bottom:0;right:0}.b-br::before{bottom:0}.b-br::after{right:0}
+.b-bl{bottom:0;left:0}.b-bl::before{bottom:0}.b-bl::after{left:0}
 
-.masthead{display:flex;justify-content:space-between;gap:24px;padding-block:22px;font-size:15px;color:var(--graphite);border-bottom:1px solid var(--rule)}
+/* ---------- type ---------- */
+.label{font-size:13px;font-weight:800;letter-spacing:.02em;line-height:1.35;text-transform:uppercase}
+.small{font-size:14px;line-height:1.65;color:var(--ink)}
+.muted{color:var(--grey)}
+.display{font-size:clamp(40px,6.4vw,104px);line-height:.95;letter-spacing:-.035em}
+.display .h{font-weight:800;display:block}
+.display .l{font-weight:300;display:block}
+.display[dir="ltr"]{text-transform:uppercase;letter-spacing:-.045em}
+.prose p+p{margin-top:1em}
+.prose{max-width:36em}
+.mono{font-feature-settings:"tnum";font-weight:400;letter-spacing:0}
+b,strong{font-weight:700}
 
-.title{padding-block:clamp(56px,10vw,128px) clamp(24px,4vw,40px)}
-.title h1{font-weight:300;font-size:clamp(46px,8vw,104px);line-height:.98;letter-spacing:-.02em}
-.title .sub{margin-top:24px;font-size:clamp(21px,2.4vw,26px);line-height:1.45;max-width:var(--measure)}
-.title .by{margin-top:18px;font-size:15px;color:var(--graphite)}
+/* ---------- frame ---------- */
+.mast{display:flex;justify-content:space-between;align-items:center;padding:28px var(--m) 0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+section{position:relative}
+.wrap{padding-inline:var(--m)}
+.block-y{padding-block:clamp(72px,11vw,160px)}
 
-/* the collapse: 30 images become one */
-.collapse{position:relative;height:280vh}
-.stage{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;gap:20px}
-.wall{position:relative;width:min(100%,calc((100vh - 170px) * 1.2));aspect-ratio:6/5;margin-inline-start:0;margin-inline-end:auto}
-.wall .tile{position:absolute;width:calc(100% / 6);aspect-ratio:1;will-change:transform,opacity}
-.wall .tile img{width:100%;height:100%;object-fit:cover}
-.wall .mean{position:absolute;inset:0;margin:auto;width:50%;height:60%;opacity:0}
-.wall .mean img{width:100%;height:100%;object-fit:cover}
-.stage-cap{display:flex;justify-content:space-between;align-items:baseline;gap:24px;font-size:17px;min-height:3.2em;width:min(100%,calc((100vh - 170px) * 1.2))}
-.stage-cap .now{max-width:var(--measure)}
-.stage-cap .count{font-family:var(--mono);font-size:13px;color:var(--graphite);white-space:nowrap}
-@media (prefers-reduced-motion:reduce){
-  .collapse{height:auto}
-  .stage{position:static;height:auto;padding-block:32px}
-  .wall{aspect-ratio:auto;display:grid;grid-template-columns:repeat(6,1fr);width:100%}
-  .wall .tile{position:static;width:auto}
-  .wall .mean{position:static;width:50%;height:auto;aspect-ratio:1;opacity:1;grid-column:1/-1;margin:24px 0 0}
-}
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:min(calc(100svh - 50px),50vw);align-items:stretch}
+.hero-text{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(48px,7vw,110px) var(--m) var(--m)}
+.hero-text .display{font-size:clamp(40px,5.3vw,92px)}
+.hero-text .display .l{white-space:nowrap}
+.hero-sub{margin-top:clamp(28px,3vw,44px);font-size:clamp(18px,1.55vw,22px);line-height:1.5;max-width:22em;font-weight:300}
+.hero-sub b{font-weight:800}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:48px}
+.hero-img{position:relative;background:#f3f1ee;overflow:hidden}
+.hero-img img{position:absolute;inset:0;height:100%;object-fit:cover}
+.hero-img .cap{position:absolute;bottom:16px;left:16px;right:16px;color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;text-shadow:0 1px 8px rgba(0,0,0,.35)}
 
-.section{padding-block:clamp(72px,10vw,128px)}
-.section h2{font-weight:500;font-size:clamp(30px,3.4vw,40px);line-height:1.15;margin-bottom:28px}
-.section h3{font-weight:700;font-size:19px;margin:1.9em 0 .3em}
-.prose p + p{margin-top:1em}
-.prose .tomb + p{margin-top:0}
+/* ---------- original work ---------- */
+.original{display:grid;grid-template-columns:5fr 7fr;gap:var(--gap) clamp(32px,6vw,110px);align-items:end}
+.original figure{position:relative}
+.original figcaption{margin-top:12px}
+.tomb{margin:28px 0 36px;display:grid;gap:2px}
+.title-block{position:relative;padding-top:0}
 
-.original{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:start}
-.plate-cap{margin-top:12px;font-size:15px;line-height:1.5;color:var(--graphite)}
-.tomb{font-size:17px;line-height:1.5;margin-bottom:22px}
-.tomb .t{font-size:24px;font-weight:300;font-style:italic;line-height:1.25;margin-top:2px}
-.tomb .m{color:var(--graphite);font-size:15px;margin-top:4px}
+/* ---------- response ---------- */
+.resp-head{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:end}
+.resp-head .display{grid-column:1/8}
+.resp-head .intro{grid-column:8/13}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,72px);margin-top:clamp(56px,7vw,100px)}
+.cols .label{margin-bottom:10px}
+.quote{margin-top:clamp(64px,8vw,120px);display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+.quote blockquote{grid-column:1/11}
+.quote p{font-size:clamp(28px,3.6vw,56px);line-height:1.08;letter-spacing:-.03em;font-weight:300}
+.quote p b{font-weight:800}
+.quote footer{margin-top:18px}
 
-blockquote{margin:28px 0;padding:22px 0;border-block:1px solid var(--rule)}
-blockquote p{font-size:clamp(23px,2.5vw,28px);font-weight:300;line-height:1.35}
-blockquote footer{margin-top:10px;font-size:15px;color:var(--graphite)}
+/* ---------- creation ---------- */
+.creation{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+.creation .display{grid-column:1/7}
+.creation .prose{grid-column:7/13;align-self:end}
+.prompt{font-size:clamp(19px,1.9vw,28px);font-weight:300;letter-spacing:-.02em;line-height:1.2;margin:6px 0 4px}
+.prompt b{font-weight:800;white-space:nowrap}
+.prompt{white-space:nowrap}
 
-.method{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,48px);margin-top:44px;padding-top:28px}
-.section .method h3{margin:0 0 6px;font-size:18px}
-.method p{font-size:16.5px;line-height:1.65;color:var(--graphite)}
-.method .prompt{font-family:var(--mono);font-size:13.5px;color:var(--ink);margin:6px 0}
+/* ---------- results ---------- */
+.results-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--gap);flex-wrap:wrap}
+.results-head .prose{max-width:30em}
+.word{padding-bottom:clamp(80px,10vw,150px)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.pair figure{position:relative}
+.pair figcaption{position:absolute;top:14px;right:14px;background:var(--paper);padding:5px 10px 4px;font-size:12px;font-weight:800;letter-spacing:.02em}
+.word-name{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:clamp(28px,3.2vw,48px) var(--m) clamp(28px,3vw,44px);border-bottom:1px solid var(--line)}
+.word-name h3{font-size:clamp(64px,11vw,184px);line-height:.9;letter-spacing:-.04em;font-weight:800}
+.word-name .gloss{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:left}
+.word-name .gloss .en{font-size:clamp(26px,3.4vw,54px);font-weight:300;letter-spacing:-.04em;text-transform:uppercase;line-height:1}
+.halves{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.half{padding:clamp(24px,2.6vw,40px) var(--m) 0}
+.half:first-child{padding-left:clamp(14px,1.6vw,24px)}
+.half:last-child{padding-right:clamp(14px,1.6vw,24px)}
+.thumbs{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
+.thumbs img{aspect-ratio:1;object-fit:cover;background:#f2f2f2}
+.half .label{margin:22px 0 8px}
+.half p.small{max-width:34em}
+.note{margin:clamp(40px,4vw,64px) var(--m) 0;display:grid;grid-template-columns:140px 1fr;gap:24px;align-items:start;max-width:820px}
 
-.entries-head{padding-top:clamp(72px,10vw,128px)}
-.entries-head h2{font-weight:500;font-size:clamp(30px,3.4vw,40px);line-height:1.15}
-.entries-head p{margin-top:12px;max-width:var(--measure);color:var(--graphite);font-size:17px}
+/* ---------- answer ---------- */
+.answer{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:start}
+.answer .display{grid-column:1/7}
+.answer .prose{grid-column:7/13}
+.answer .prose p{font-size:clamp(18px,1.5vw,21px);line-height:1.65}
 
-.entry{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px clamp(28px,5vw,72px);padding-block:clamp(56px,8vw,96px);align-items:start}
-.lemma{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.lemma h3{font-weight:300;font-size:clamp(56px,7vw,92px);line-height:1.05}
-.lemma .pos,.lemma .gloss{font-size:20px;font-style:italic;color:var(--graphite)}
-.senses{list-style:none;counter-reset:s;margin-top:28px}
-.senses li{counter-increment:s;display:grid;grid-template-columns:26px 1fr;font-size:17.5px;line-height:1.65}
-.senses li + li{margin-top:18px}
-.senses li::before{content:counter(s) ".";font-weight:700}
-.senses b{font-weight:700}
-.tomb-line{text-align:right;margin-top:28px;padding-top:14px;border-top:1px solid var(--rule);font-size:14.5px;line-height:1.55;color:var(--graphite)}
-.tomb-line .mono{color:var(--ink)}
+.colo{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:28px var(--m) 36px;border-top:1px solid var(--line);font-size:13px;color:var(--grey)}
 
-.compare{position:relative;user-select:none}
-.compare .frame{position:relative;aspect-ratio:1;overflow:hidden;background:var(--plate)}
-.compare .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.compare .over{clip-path:inset(0 0 0 var(--cut,50%))}
-.compare .seam{position:absolute;top:0;bottom:0;left:var(--cut,50%);width:1px;background:#fff;box-shadow:0 0 0 .5px rgba(0,0,0,.2);pointer-events:none}
-.compare .tag{position:absolute;top:12px;font-size:14px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.55);pointer-events:none}
-.compare .tag.r{right:14px}
-.compare .tag.l{left:14px}
-.compare input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;margin-top:10px;background:transparent;cursor:ew-resize;direction:rtl}
-.compare input[type=range]::-webkit-slider-runnable-track{height:1px;background:var(--ink)}
-.compare input[type=range]::-moz-range-track{height:1px;background:var(--ink)}
-.compare input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--umber);margin-top:-7.5px;border:0}
-.compare input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--umber);border:0}
-.compare .ends{display:flex;justify-content:space-between;font-size:14px;color:var(--graphite)}
-
-.note{grid-column:1/-1;display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;align-items:start;padding:18px;background:var(--plate);max-width:calc(var(--measure) + 136px)}
-.note p{font-size:16px;line-height:1.6}
-.note b{font-weight:700}
-
-details{grid-column:1/-1;border-top:1px solid var(--rule)}
-summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding-block:14px;font-size:16.5px}
-summary::-webkit-details-marker{display:none}
-summary svg{width:14px;height:14px;transition:transform .3s var(--ease)}
-details[open] summary svg{transform:rotate(180deg)}
-summary:hover{color:var(--umber)}
-.sets{display:grid;gap:28px;padding-bottom:10px}
-.sets figcaption{margin-top:8px;font-size:14.5px;color:var(--graphite)}
-
-.answer p{font-size:clamp(22px,2.4vw,27px);line-height:1.55;font-weight:300}
-.colophon{padding-block:36px 64px;font-size:15px;line-height:1.7;color:var(--graphite)}
-
+/* ---------- small screens ---------- */
 @media (max-width:860px){
-  body{font-size:18px}
-  .original,.method,.entry{grid-template-columns:1fr}
-}
-@media (max-width:520px){
-  .masthead span:last-child{display:none}
-  .note{grid-template-columns:72px 1fr;padding:14px}
-  .stage-cap{flex-direction:column;gap:4px}
+  body{font-size:16px}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-img{aspect-ratio:1}
+  .original,.resp-head,.creation,.answer,.quote{grid-template-columns:1fr}
+  .resp-head>*,.creation>*,.answer>*,.quote blockquote{grid-column:auto!important}
+  .cols{grid-template-columns:1fr;gap:36px}
+  .thumbs{grid-template-columns:repeat(6,1fr);gap:2px}
+  .half,.half:first-child,.half:last-child{padding-inline:var(--m)}
+  .halves{grid-template-columns:1fr}
+  .note{grid-template-columns:96px 1fr}
 }
 </style>
 </head>
 <body>
 
-<div class="page">
-  <header class="masthead">
-    <span>צחי שמש · עיצוב בעזרת בינה מלאכותית · HIT</span>
-    <span>משימה 2: המרחב הלטנטי</span>
-  </header>
+<header class="mast">
+  <span dir="ltr">Corpus: The Client Said</span>
+  <span>צחי שמש · HIT · 2026</span>
+</header>
 
-  <section class="title">
-    <h1 dir="ltr" class="block">Corpus: The Client Said</h1>
-    <p class="sub">מילון קטן של מה שלקוחות אומרים למעצב, כפי שהמכונה מבינה אותו.</p>
-    <p class="by">צחי שמש, 2026 · בעקבות <bdi>Trevor Paglen</bdi></p>
-  </section>
-</div>
-
-<section class="collapse" aria-label="שלושים תמונות שהופכות לאחת">
-  <div class="stage page">
-    <div class="wall" id="wall">
-      <figure class="mean"><img src="img/warm-machine.jpg" alt="הממוצע של 30 התמונות: חמים, לפי המכונה" width="900" height="900"></figure>
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="t">
+  <div class="hero-text">
+    <div>
+      <span class="dash"></span>
+      <p class="label">משימה 2 · המרחב הלטנטי</p>
+      <h1 id="t" class="display r" dir="ltr" style="margin-top:clamp(36px,5vw,80px)"><span class="h">Corpus:</span><span class="l">The Client Said</span></h1>
+      <p class="hero-sub">ארבע מילים שלקוחות אומרים למעצב פנים, <b>כפי שהמכונה מבינה אותן.</b></p>
     </div>
-    <div class="stage-cap">
-      <p class="now" id="now">30 תמונות, פרומפט אחד: <bdi class="mono">A living room that feels warm.</bdi></p>
-      <span class="count" id="count">n=30</span>
+    <div class="hero-foot">
+      <p class="small">צחי שמש · בעקבות <bdi>Trevor Paglen</bdi></p>
+      <p class="small muted">עיצוב בעזרת בינה מלאכותית</p>
+    </div>
+    <span class="bracket b-tl" style="top:clamp(48px,7vw,110px);left:var(--m)" aria-hidden="true"></span>
+  </div>
+  <figure class="hero-img">
+    <img src="img/warm-machine.jpg" alt="ממוצע של 30 תמונות שנוצרו מהפרומפט A living room that feels warm" width="900" height="900">
+    <figcaption class="cap">חמים, לפי המכונה · ממוצע של 30 תמונות</figcaption>
+  </figure>
+</section>
+
+<!-- ============ ORIGINAL ============ -->
+<section class="wrap block-y" aria-labelledby="h-orig">
+  <span class="bracket b-tl" style="left:var(--m);top:clamp(40px,6vw,90px)" aria-hidden="true"></span>
+  <div class="original">
+    <div class="prose">
+      <span class="dash"></span>
+      <p class="label" id="h-orig">העבודה המקורית</p>
+      <h2 class="display r" dir="ltr" style="margin-top:22px;font-size:clamp(40px,5.2vw,84px)"><span class="h">Trevor Paglen</span></h2>
+      <div class="tomb">
+        <p dir="ltr" class="r" style="font-size:clamp(20px,1.8vw,26px);font-weight:300;letter-spacing:-.02em;line-height:1.25">Adversarially Evolved Hallucinations</p>
+        <p class="small muted">סדרה, 2017 ואילך · הדפסות דיי־סבלימציה</p>
+      </div>
+      <p>פגלן בנה סטים של אימון לפי טקסונומיות "לא שימושיות" מספרות, מפסיכואנליזה ומפולקלור, ולימד זוג רשתות GAN לזהות אותן ולייצר אותן. כל דימוי נושא שם של אובייקט, ובסוגריים את הקורפוס שממנו נולד.</p>
+    </div>
+    <figure>
+      <img src="paglen.jpg" alt="Trevor Paglen, Vampire (Corpus: Monsters of Capitalism), 2017" width="1025" height="1283" loading="lazy">
+      <figcaption class="small muted"><bdi>Vampire (Corpus: Monsters of Capitalism)</bdi>, 2017</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ RESPONSE ============ -->
+<section class="wrap block-y" aria-labelledby="h-resp" style="padding-top:0">
+  <div class="resp-head">
+    <h2 id="h-resp" class="display"><span class="h">ארכיון</span><span class="l">ומה שחסר בו</span></h2>
+    <div class="intro prose">
+      <span class="dash"></span>
+      <p class="label">תגובה</p>
+      <p style="margin-top:10px">בסדרה, פגלן בונה ארכיונים שאין להם שימוש: "מפלצות הקפיטליזם", "פירוש החלומות", "אותות ומופתים". שתי רשתות לומדות לזהות את הקטגוריות ולייצר אותן, עד שנוצר דימוי שאין לו מקור במציאות, אבל המכונה "מאמינה" שהוא ערפד או קשת.</p>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <span class="dash"></span>
+      <h3 class="label">הארכיון, ומה שחסר בו</h3>
+      <p class="small">אלפי תמונות שפגלן עצמו בחר וסיווג. מה שחסר הוא כל מה שמחוץ לספרייה שלו, שרובה קאנון מערבי. ההזיה רחבה רק כמו המדף שממנו נלקחה.</p>
+    </div>
+    <div>
+      <span class="dash"></span>
+      <h3 class="label">מה המרחב חושף, ומה הוא מעלים</h3>
+      <p class="small">הוא חושף שכל קטגוריה היא החלטה של מישהו: "ערפד" ו"בננה" הן הסכמה, לא עובדה. הוא מעלים את הרפרנט, ואת עשרות אלפי התוצרים שנפסלו בדרך לכל הדפסה.</p>
+    </div>
+    <div>
+      <span class="dash"></span>
+      <h3 class="label">אסטרטגיה</h3>
+      <p class="small">בשלב הדאטה זהו סירוב לקטגוריות ה"שימושיות" של שוק ושיטור. בשלב הפלט זהו גליץ': הטעות המתמשכת של המכונה היא היצירה.</p>
+    </div>
+  </div>
+
+  <div class="quote">
+    <blockquote>
+      <p dir="ltr" class="r">“Every training set and every model <b>contains a worldview.</b>”</p>
+      <footer class="small"><bdi>Trevor Paglen</bdi>, על הסדרה</footer>
+    </blockquote>
+  </div>
+  <span class="bracket b-br" style="right:var(--m)" aria-hidden="true"></span>
+</section>
+
+<!-- ============ CREATION ============ -->
+<section class="wrap block-y" aria-labelledby="h-work" style="border-top:1px solid var(--line)">
+  <div class="creation">
+    <h2 id="h-work" class="display"><span class="h">היצירה</span><span class="l">מה שהלקוח אמר</span></h2>
+    <div class="prose">
+      <p>פגלן המציא קורפוסים. אני לקחתי קורפוס שכבר קיים, ושאני שומע בכל פגישה ראשונה כמעצב פנים: המילים שלקוחות משתמשים בהן כדי לתאר את הבית שהם רוצים.</p>
+      <p>לכל מילה נוצרו שני סטים של 30 תמונות, וכל סט חושב לממוצע פיקסלים אחד. מה שחוזר נשאר חד, מה שמשתנה נמחק. ההזיה היא המרכז של המרחב הלטנטי, כשהוא הופך לגלוי.</p>
+    </div>
+  </div>
+  <div class="cols">
+    <div>
+      <span class="dash"></span>
+      <h3 class="label">לפי המכונה</h3>
+      <p dir="ltr" class="r prompt">A living room that feels <b>___.</b></p>
+      <p class="small">הפרומפט החשוף, 30 פעמים. המכונה בוחרת לבד מה מתאים להגדרה.</p>
+    </div>
+    <div>
+      <span class="dash"></span>
+      <h3 class="label">לפי המעצב</h3>
+      <p class="small">אותה מילה, בתוך דירה ישראלית מתוארת: תקרת טיח, תריס אלומיניום, מזגן מפוצל. חמישה צירים שהגדרתי, 6 תמונות לכל ציר.</p>
+    </div>
+    <div>
+      <span class="dash"></span>
+      <h3 class="label">מהלך וכלים</h3>
+      <p class="small"><b>"הממוצע"</b> ו<b>"מערכת סיווג משלכם"</b>.</p>
+      <p dir="ltr" class="r small" style="margin-top:6px">Flux Dev (Magnific) · Python, OpenCV</p>
+      <p class="small">עיבוד זהה לכל ההזיות: הבהרה ורוויה ×1.75.</p>
     </div>
   </div>
 </section>
 
-<div class="page">
-
-  <section class="section rule" aria-labelledby="h-original">
-    <div class="original">
-      <div class="prose measure">
-        <h2 id="h-original">העבודה המקורית</h2>
-        <div class="tomb">
-          <div dir="ltr" class="block">Trevor Paglen</div>
-          <div dir="ltr" class="block t">Adversarially Evolved Hallucinations</div>
-          <div class="m">סדרה, 2017 ואילך · הדפסות דיי־סבלימציה</div>
-        </div>
-        <p>פגלן בנה סטים של אימון לפי טקסונומיות "לא שימושיות" מספרות, מפסיכואנליזה ומפולקלור, ולימד זוג רשתות GAN לזהות אותן ולייצר אותן. כל דימוי נושא שם של אובייקט, ובסוגריים את הקורפוס שממנו נולד.</p>
-      </div>
-      <figure>
-        <img src="paglen.jpg" alt="Trevor Paglen, Vampire (Corpus: Monsters of Capitalism), 2017" width="1025" height="1283" loading="lazy">
-        <figcaption class="plate-cap"><bdi>Vampire (Corpus: Monsters of Capitalism)</bdi>, 2017. באדיבות האמן.</figcaption>
-      </figure>
+<!-- ============ RESULTS ============ -->
+<section aria-labelledby="h-res">
+  <div class="wrap results-head" style="padding-bottom:clamp(40px,5vw,72px)">
+    <h2 id="h-res" class="display"><span class="h">ארבע הזיות</span><span class="l">ארבע מילים</span></h2>
+    <div class="prose small">
+      <span class="dash"></span>
+      <p>מימין: מה שהמכונה רואה כשנותנים לה רק את המילה. משמאל: אותה מילה, בדירה שהמעצב תיאר. מתחת לכל הזיה, התמונות שמהן היא נוצרה.</p>
     </div>
-  </section>
-
-  <section class="section rule" aria-labelledby="h-response">
-    <div class="prose measure">
-      <h2 id="h-response">תגובה</h2>
-      <p>בסדרה, פגלן בונה ארכיונים שאין להם שימוש: "מפלצות הקפיטליזם", "פירוש החלומות", "אותות ומופתים". שתי רשתות לומדות לזהות את הקטגוריות ולייצר אותן, עד שנוצר דימוי שאין לו מקור במציאות, אבל המכונה "מאמינה" שהוא ערפד או קשת.</p>
-      <h3>הארכיון, ומה שחסר בו</h3>
-      <p>אלפי תמונות שפגלן עצמו בחר וסיווג. מה שחסר הוא כל מה שמחוץ לספרייה שלו, שרובה קאנון מערבי. ההזיה רחבה רק כמו המדף שממנו נלקחה.</p>
-      <h3>מה המרחב חושף, ומה הוא מעלים</h3>
-      <p>הוא חושף שכל קטגוריה היא החלטה של מישהו: "ערפד" ו"בננה" הן הסכמה, לא עובדה.</p>
-      <blockquote>
-        <p dir="ltr" class="block">“Every training set and every model contains a worldview.”</p>
-        <footer><bdi>Trevor Paglen</bdi>, על הסדרה</footer>
-      </blockquote>
-      <p>הוא מעלים את הרפרנט, ואת עשרות אלפי התוצרים שנפסלו בדרך לכל הדפסה.</p>
-      <h3>אסטרטגיה</h3>
-      <p>בשלב הדאטה זהו סירוב לקטגוריות ה"שימושיות" של שוק ושיטור. בשלב הפלט זהו גליץ': הטעות המתמשכת של המכונה היא היצירה.</p>
-    </div>
-  </section>
-
-  <section class="section rule" aria-labelledby="h-work">
-    <div class="prose measure">
-      <h2 id="h-work">היצירה</h2>
-      <p>פגלן המציא קורפוסים. אני לקחתי קורפוס שכבר קיים, ושאני שומע בכל פגישה ראשונה כמעצב פנים: המילים שלקוחות משתמשים בהן כדי לתאר את הבית שהם רוצים.</p>
-      <p>לכל מילה נוצרו שני סטים של 30 תמונות, וכל סט חושב לממוצע פיקסלים אחד. מה שחוזר נשאר חד, מה שמשתנה נמחק. ההזיה היא המרכז של המרחב הלטנטי, כשהוא הופך לגלוי.</p>
-    </div>
-    <div class="method rule">
-      <div>
-        <h3>לפי המכונה</h3>
-        <p>הפרומפט החשוף, 30 פעמים:</p>
-        <p dir="ltr" class="block prompt">A living room that feels ___.</p>
-        <p>המכונה בוחרת לבד מה מתאים להגדרה.</p>
-      </div>
-      <div>
-        <h3>לפי המעצב</h3>
-        <p>אותה מילה, בתוך דירה ישראלית מתוארת: תקרת טיח, תריס אלומיניום, מזגן מפוצל. חמישה צירים שהגדרתי, 6 תמונות לכל ציר.</p>
-      </div>
-      <div>
-        <h3>מהלך וכלים</h3>
-        <p>"הממוצע" ו"מערכת סיווג משלכם".</p>
-        <p dir="ltr" class="block prompt">Flux Dev (Magnific) · Python, OpenCV</p>
-        <p>עיבוד זהה לכל ההזיות: הבהרה ורוויה ×1.75.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="entries-head rule">
-    <h2>הערכים</h2>
-    <p>לכל מילה שתי הגדרות ושתי הזיות. גררו את הסליידר כדי לעבור בין מה שהמכונה רואה למה שהמעצב תיאר.</p>
   </div>
 
-  <article class="entry" aria-labelledby="w1">
-    <div>
-      <div class="lemma"><h3 id="w1">חָמִים</h3><span class="pos">ת׳</span><span class="gloss" dir="ltr">warm</span></div>
-      <ol class="senses">
-        <li><span><b>לפי המכונה.</b> בקתה צפון־אירופאית: תקרת עץ, ספה בז', אח בוערת בחצי מהתמונות, יער מאחורי החלון. אף אדם.</span></li>
-        <li><span><b>לפי המעצב.</b> מאוורר תקרה, אריחים ותריס, וגם רדיאטור ב־19 מתוך 30 תמונות. בדירות ישראליות כמעט אין כאלה; ההטיה האירופאית נשארת גם כשמתארים לה את הדירה.</span></li>
-      </ol>
-      <p class="tomb-line" dir="ltr"><i>Warm (Corpus: The Client Said)</i>, Hallucination, 2026 · <span class="mono">n=30 / 30</span></p>
+  <article class="word" aria-labelledby="w1">
+    <div class="pair">
+      <figure><img src="img/warm-machine.jpg" alt="חמים, לפי המכונה" width="900" height="900" loading="lazy"><figcaption>לפי המכונה</figcaption></figure>
+      <figure><img src="img/warm-israeli.jpg" alt="חמים, לפי המעצב" width="900" height="900" loading="lazy"><figcaption>לפי המעצב</figcaption></figure>
     </div>
-    <figure class="compare">
-      <div class="frame">
-        <img src="img/warm-machine.jpg" alt="חמים, לפי המכונה" width="900" height="900" loading="lazy">
-        <img class="over" src="img/warm-israeli.jpg" alt="חמים, לפי המעצב" width="900" height="900" loading="lazy">
-        <span class="seam"></span><span class="tag r">לפי המעצב</span><span class="tag l">לפי המכונה</span>
+    <div class="word-name">
+      <h3 id="w1">חמים</h3>
+      <div class="gloss"><span class="en" dir="ltr">Warm</span><span class="small muted mono" dir="ltr">n=30 / 30</span></div>
+    </div>
+    <div class="halves">
+      <div class="half">
+        <div class="thumbs" data-set="warm-machine" data-n="30"></div>
+        <h4 class="label">לפי המכונה</h4>
+        <p class="small">בקתה צפון־אירופאית: תקרת עץ, ספה בז', אח בוערת בחצי מהתמונות, יער מאחורי החלון. אף אדם.</p>
       </div>
-      <input type="range" min="0" max="100" value="50" aria-label="מעבר בין ההזיה של המכונה להזיה של המעצב, חמים">
-      <div class="ends"><span>לפי המעצב</span><span>לפי המכונה</span></div>
-    </figure>
+      <div class="half">
+        <div class="thumbs" data-set="warm-israeli" data-n="30"></div>
+        <h4 class="label">לפי המעצב</h4>
+        <p class="small">מאוורר תקרה, אריחים ותריס, וגם רדיאטור ב־19 מתוך 30 תמונות. בדירות ישראליות כמעט אין כאלה; ההטיה האירופאית נשארת גם כשמתארים לה את הדירה.</p>
+      </div>
+    </div>
     <div class="note">
       <img src="img/warm-israeli-by-word.jpg" alt="ההזיה כשנכתבה רק המילה ישראלי" width="600" height="600" loading="lazy">
-      <p><b>הערת שיטה.</b> בניסוי הראשון כתבתי רק את המילה "ישראלי". המכונה החזירה את אותה בקתה עם אח, ו"דירה ישראלית ישנה" יצאה עם רדיאטורים ותמונה של מלאך נוצרי. רק תיאור פיזי של הדירה הזיז אותה.</p>
-    </div>
-    <details>
-      <summary>60 התמונות שמהן נוצרו שתי ההזיות<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></summary>
-      <div class="sets">
-        <figure><img src="img/warm-machine-set.jpg" alt="30 התמונות של המכונה" loading="lazy"><figcaption>לפי המכונה</figcaption></figure>
-        <figure><img src="img/warm-israeli-set.jpg" alt="30 התמונות לפי המעצב" loading="lazy"><figcaption>לפי המעצב · חומר, אור, אנשים, זיכרון, אקלים</figcaption></figure>
+      <div>
+        <span class="dash"></span>
+        <h4 class="label">הערת שיטה</h4>
+        <p class="small" style="margin-top:8px">בניסוי הראשון כתבתי רק את המילה "ישראלי". המכונה החזירה את אותה בקתה עם אח, ו"דירה ישראלית ישנה" יצאה עם רדיאטורים ותמונה של מלאך נוצרי. רק תיאור פיזי של הדירה הזיז אותה.</p>
       </div>
-    </details>
+    </div>
   </article>
 
-  <article class="entry rule" aria-labelledby="w2">
-    <div>
-      <div class="lemma"><h3 id="w2">נָקִי</h3><span class="pos">ת׳</span><span class="gloss" dir="ltr">clean</span></div>
-      <ol class="senses">
-        <li><span><b>לפי המכונה.</b> חדר מבוים לצילום: ספת L בז', שני עציצים סימטריים, ובכ־12 תמונות מסגרת ריקה על הקיר. נקי הוא מקום שאין בו על מה להסתכל.</span></li>
-        <li><span><b>לפי המעצב.</b> חצי מהתמונות הן חדר ריק, כמו מודעת השכרה: נקי וישראלי יחד פירושם שאין פה אף אחד. היוצא מן הכלל הוא ספונג'ה, התמונות היחידות שבהן נקי הוא פעולה של מישהו.</span></li>
-      </ol>
-      <p class="tomb-line" dir="ltr"><i>Clean (Corpus: The Client Said)</i>, Hallucination, 2026 · <span class="mono">n=30 / 30</span></p>
+  <article class="word" aria-labelledby="w2">
+    <div class="pair">
+      <figure><img src="img/clean-machine.jpg" alt="נקי, לפי המכונה" width="900" height="900" loading="lazy"><figcaption>לפי המכונה</figcaption></figure>
+      <figure><img src="img/clean-israeli.jpg" alt="נקי, לפי המעצב" width="900" height="900" loading="lazy"><figcaption>לפי המעצב</figcaption></figure>
     </div>
-    <figure class="compare">
-      <div class="frame">
-        <img src="img/clean-machine.jpg" alt="נקי, לפי המכונה" width="900" height="900" loading="lazy">
-        <img class="over" src="img/clean-israeli.jpg" alt="נקי, לפי המעצב" width="900" height="900" loading="lazy">
-        <span class="seam"></span><span class="tag r">לפי המעצב</span><span class="tag l">לפי המכונה</span>
+    <div class="word-name">
+      <h3 id="w2">נקי</h3>
+      <div class="gloss"><span class="en" dir="ltr">Clean</span><span class="small muted mono" dir="ltr">n=30 / 30</span></div>
+    </div>
+    <div class="halves">
+      <div class="half">
+        <div class="thumbs" data-set="clean-machine" data-n="30"></div>
+        <h4 class="label">לפי המכונה</h4>
+        <p class="small">חדר מבוים לצילום: ספת L בז', שני עציצים סימטריים, ובכ־12 תמונות מסגרת ריקה על הקיר. נקי הוא מקום שאין בו על מה להסתכל.</p>
       </div>
-      <input type="range" min="0" max="100" value="50" aria-label="מעבר בין ההזיה של המכונה להזיה של המעצב, נקי">
-      <div class="ends"><span>לפי המעצב</span><span>לפי המכונה</span></div>
-    </figure>
-    <details>
-      <summary>60 התמונות שמהן נוצרו שתי ההזיות<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></summary>
-      <div class="sets">
-        <figure><img src="img/clean-machine-set.jpg" alt="30 התמונות של המכונה" loading="lazy"><figcaption>לפי המכונה</figcaption></figure>
-        <figure><img src="img/clean-israeli-set.jpg" alt="30 התמונות לפי המעצב" loading="lazy"><figcaption>לפי המעצב · חומר, סדר, אור, ספונג'ה, נקי עם חיים</figcaption></figure>
+      <div class="half">
+        <div class="thumbs" data-set="clean-israeli" data-n="30"></div>
+        <h4 class="label">לפי המעצב</h4>
+        <p class="small">חצי מהתמונות הן חדר ריק, כמו מודעת השכרה: נקי וישראלי יחד פירושם שאין פה אף אחד. היוצא מן הכלל הוא ספונג'ה, התמונות היחידות שבהן נקי הוא פעולה של מישהו.</p>
       </div>
-    </details>
+    </div>
   </article>
 
-  <article class="entry rule" aria-labelledby="w3">
-    <div>
-      <div class="lemma"><h3 id="w3">יֻקְרָתִי</h3><span class="pos">ת׳</span><span class="gloss" dir="ltr">luxurious</span></div>
-      <ol class="senses">
-        <li><span><b>לפי המכונה.</b> לא שיש ולא זהב: בז' שקט, שולחן עגול כהה, ותקרה מונמכת עם פס לד שנשאר חד בתוך הממוצע. יוקרה היא תאורה נסתרת.</span></li>
-        <li><span><b>לפי המעצב.</b> "דירת קבלן" יצאה מדויקת להפליא: קיר טלוויזיה בחיפוי שיש, גבס עם לד, פורצלן מבריק. את זה המכונה מכירה היטב. הפס הכחול באמצע הוא הים, מהפנטהאוז ומהווילה.</span></li>
-      </ol>
-      <p class="tomb-line" dir="ltr"><i>Luxurious (Corpus: The Client Said)</i>, Hallucination, 2026 · <span class="mono">n=30 / 30</span></p>
+  <article class="word" aria-labelledby="w3">
+    <div class="pair">
+      <figure><img src="img/luxurious-machine.jpg" alt="יוקרתי, לפי המכונה" width="900" height="900" loading="lazy"><figcaption>לפי המכונה</figcaption></figure>
+      <figure><img src="img/luxurious-israeli.jpg" alt="יוקרתי, לפי המעצב" width="900" height="900" loading="lazy"><figcaption>לפי המעצב</figcaption></figure>
     </div>
-    <figure class="compare">
-      <div class="frame">
-        <img src="img/luxurious-machine.jpg" alt="יוקרתי, לפי המכונה" width="900" height="900" loading="lazy">
-        <img class="over" src="img/luxurious-israeli.jpg" alt="יוקרתי, לפי המעצב" width="900" height="900" loading="lazy">
-        <span class="seam"></span><span class="tag r">לפי המעצב</span><span class="tag l">לפי המכונה</span>
+    <div class="word-name">
+      <h3 id="w3">יוקרתי</h3>
+      <div class="gloss"><span class="en" dir="ltr">Luxurious</span><span class="small muted mono" dir="ltr">n=30 / 30</span></div>
+    </div>
+    <div class="halves">
+      <div class="half">
+        <div class="thumbs" data-set="luxurious-machine" data-n="30"></div>
+        <h4 class="label">לפי המכונה</h4>
+        <p class="small">לא שיש ולא זהב: בז' שקט, שולחן עגול כהה, ותקרה מונמכת עם פס לד שנשאר חד בתוך הממוצע. יוקרה היא תאורה נסתרת.</p>
       </div>
-      <input type="range" min="0" max="100" value="50" aria-label="מעבר בין ההזיה של המכונה להזיה של המעצב, יוקרתי">
-      <div class="ends"><span>לפי המעצב</span><span>לפי המכונה</span></div>
-    </figure>
-    <details>
-      <summary>60 התמונות שמהן נוצרו שתי ההזיות<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></summary>
-      <div class="sets">
-        <figure><img src="img/luxurious-machine-set.jpg" alt="30 התמונות של המכונה" loading="lazy"><figcaption>לפי המכונה</figcaption></figure>
-        <figure><img src="img/luxurious-israeli-set.jpg" alt="30 התמונות לפי המעצב" loading="lazy"><figcaption>לפי המעצב · שיש ופליז, פנטהאוז, דירת קבלן, וילה בהרצליה, תל אביב של שנות ה־30</figcaption></figure>
+      <div class="half">
+        <div class="thumbs" data-set="luxurious-israeli" data-n="30"></div>
+        <h4 class="label">לפי המעצב</h4>
+        <p class="small">"דירת קבלן" יצאה מדויקת להפליא: קיר טלוויזיה בחיפוי שיש, גבס עם לד, פורצלן מבריק. את זה המכונה מכירה היטב. הפס הכחול באמצע הוא הים, מהפנטהאוז ומהווילה.</p>
       </div>
-    </details>
+    </div>
   </article>
 
-  <article class="entry rule" aria-labelledby="w4">
-    <div>
-      <div class="lemma"><h3 id="w4">כְּמוֹ בְּמָלוֹן</h3><span class="pos">ביט׳</span><span class="gloss" dir="ltr">like a hotel</span></div>
-      <ol class="senses">
-        <li><span><b>לפי המכונה.</b> כמעט זהה ל"יוקרתי": אותה ספה, אותו שולחן, אותה מסגרת אור. ההבדל היחיד הוא נוף של מגדלים בחלון. מלון ויוקרה הן מילה אחת.</span></li>
-        <li><span><b>לפי המעצב.</b> החדר האמין ביותר בכל הפרויקט הוא "חדר מלון רגיל באמת": מוקט, מזגן מתחת לחלון, מיני בר. אילת, ים המלח והצימר בגליל נמסים לחלון אחד בהיר עם אופק.</span></li>
-      </ol>
-      <p class="tomb-line" dir="ltr"><i>Like a Hotel (Corpus: The Client Said)</i>, Hallucination, 2026 · <span class="mono">n=30 / 28</span></p>
+  <article class="word" aria-labelledby="w4">
+    <div class="pair">
+      <figure><img src="img/hotel-machine.jpg" alt="כמו במלון, לפי המכונה" width="900" height="900" loading="lazy"><figcaption>לפי המכונה</figcaption></figure>
+      <figure><img src="img/hotel-israeli.jpg" alt="כמו במלון, לפי המעצב" width="900" height="900" loading="lazy"><figcaption>לפי המעצב</figcaption></figure>
     </div>
-    <figure class="compare">
-      <div class="frame">
-        <img src="img/hotel-machine.jpg" alt="כמו במלון, לפי המכונה" width="900" height="900" loading="lazy">
-        <img class="over" src="img/hotel-israeli.jpg" alt="כמו במלון, לפי המעצב" width="900" height="900" loading="lazy">
-        <span class="seam"></span><span class="tag r">לפי המעצב</span><span class="tag l">לפי המכונה</span>
+    <div class="word-name">
+      <h3 id="w4">כמו במלון</h3>
+      <div class="gloss"><span class="en" dir="ltr">Like a Hotel</span><span class="small muted mono" dir="ltr">n=30 / 28</span></div>
+    </div>
+    <div class="halves">
+      <div class="half">
+        <div class="thumbs" data-set="hotel-machine" data-n="30"></div>
+        <h4 class="label">לפי המכונה</h4>
+        <p class="small">כמעט זהה ל"יוקרתי": אותה ספה, אותו שולחן, אותה מסגרת אור. ההבדל היחיד הוא נוף של מגדלים בחלון. מלון ויוקרה הן מילה אחת.</p>
       </div>
-      <input type="range" min="0" max="100" value="50" aria-label="מעבר בין ההזיה של המכונה להזיה של המעצב, כמו במלון">
-      <div class="ends"><span>לפי המעצב</span><span>לפי המכונה</span></div>
-    </figure>
-    <details>
-      <summary>58 התמונות שמהן נוצרו שתי ההזיות<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></summary>
-      <div class="sets">
-        <figure><img src="img/hotel-machine-set.jpg" alt="30 התמונות של המכונה" loading="lazy"><figcaption>לפי המכונה</figcaption></figure>
-        <figure><img src="img/hotel-israeli-set.jpg" alt="28 התמונות לפי המעצב" loading="lazy"><figcaption>לפי המעצב · אילת, בוטיק בתל אביב, ים המלח, חדר מלון רגיל, צימר בגליל</figcaption></figure>
+      <div class="half">
+        <div class="thumbs" data-set="hotel-israeli" data-n="28"></div>
+        <h4 class="label">לפי המעצב</h4>
+        <p class="small">החדר האמין ביותר בכל הפרויקט הוא "חדר מלון רגיל באמת": מוקט, מזגן מתחת לחלון, מיני בר. אילת, ים המלח והצימר בגליל נמסים לחלון אחד בהיר עם אופק.</p>
       </div>
-    </details>
+    </div>
   </article>
+</section>
 
-  <section class="section answer rule" aria-labelledby="h-answer">
-    <div class="measure">
-      <h2 id="h-answer">במה היצירה עונה לעבודה</h2>
-      <p>פגלן בנה קורפוסים לא רציונליים כדי לגרום למכונה להזות את מה שאינו קיים. אני משתמש בקורפוס הכי יומיומי שיש, המילים של הלקוחות, ומראה שהמכונה כבר הוזה אותו: היא מצמצמת כל מילה לאותו חדר בז' בלי אנשים, וגם כשמתארים לה דירה ישראלית במפורש היא משאירה בה רדיאטור. תפיסת העולם שפגלן הצביע עליה כבר לא נמצאת בארכיון של אמן; היא נכנסת לבריף, ומשם לבתים של אנשים.</p>
+<!-- ============ ANSWER ============ -->
+<section class="wrap block-y" aria-labelledby="h-ans" style="border-top:1px solid var(--line)">
+  <span class="bracket b-tr" style="right:var(--m);top:clamp(40px,6vw,90px)" aria-hidden="true"></span>
+  <div class="answer">
+    <h2 id="h-ans" class="display"><span class="h">תגובה</span><span class="l">ולא חיקוי</span></h2>
+    <div class="prose">
+      <span class="dash"></span>
+      <p>פגלן בנה קורפוסים לא רציונליים כדי לגרום למכונה להזות את מה שאינו קיים. אני משתמש בקורפוס הכי יומיומי שיש, המילים של הלקוחות, ומראה שהמכונה כבר הוזה אותו: היא מצמצמת כל מילה לאותו חדר בז' בלי אנשים, וגם כשמתארים לה דירה ישראלית במפורש היא משאירה בה רדיאטור. <b>תפיסת העולם שפגלן הצביע עליה כבר לא נמצאת בארכיון של אמן; היא נכנסת לבריף, ומשם לבתים של אנשים.</b></p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="colophon rule">
-    <p>צחי שמש · עיצוב בעזרת בינה מלאכותית, HIT, 2026</p>
-    <p>מקורות: <a href="https://paglen.studio/2020/04/09/hallucinations/"><bdi>Trevor Paglen, Hallucinations</bdi></a> · <bdi>Antonio Somaini, "Latent Spaces: AI, Art, and the Archive", October 196 (2026)</bdi></p>
-  </footer>
-</div>
+<footer class="colo">
+  <p>צחי שמש · עיצוב בעזרת בינה מלאכותית, HIT, 2026</p>
+  <p>מקורות: <a href="https://paglen.studio/2020/04/09/hallucinations/"><bdi>Trevor Paglen, Hallucinations</bdi></a> · <bdi>Antonio Somaini, "Latent Spaces: AI, Art, and the Archive", October 196 (2026)</bdi></p>
+</footer>
 
 <script>
-/* compare sliders: RTL range, value 0 = thumb at the right edge. The designer's image fills from the right. */
-document.querySelectorAll('.compare').forEach(fig=>{
-  const r=fig.querySelector('input'), f=fig.querySelector('.frame');
-  const set=()=>f.style.setProperty('--cut',(100-r.value)+'%');
-  r.addEventListener('input',set); set();
+document.querySelectorAll('.thumbs').forEach(g=>{
+  const s=g.dataset.set, n=+g.dataset.n; let h='';
+  for(let i=0;i<n;i++) h+='<img src="img/src/'+s+'/'+String(i).padStart(2,'0')+'.jpg" alt="" width="256" height="256" loading="lazy" decoding="async">';
+  g.innerHTML=h;
 });
-
-/* the collapse: 30 tiles fold into their mean */
-(function(){
-  const wall=document.getElementById('wall'); if(!wall) return;
-  const N=30, cols=6, rows=5, mean=wall.querySelector('.mean');
-  const tiles=[];
-  for(let i=0;i<N;i++){
-    const t=document.createElement('div'); t.className='tile';
-    t.style.right=(i%cols)*100/cols+'%'; t.style.top=Math.floor(i/cols)*100/rows+'%';
-    t.innerHTML='<img src="img/wall/w'+String(i).padStart(2,'0')+'.jpg" alt="">';
-    wall.insertBefore(t,mean); tiles.push(t);
-  }
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const sec=wall.closest('.collapse'), now=document.getElementById('now'), count=document.getElementById('count');
-  const first=now.innerHTML;
-  const ease=x=>1-Math.pow(1-x,3);
-  let off=[], state=0;
-  function measure(){
-    const w=wall.getBoundingClientRect(), s=w.width/cols, cx=w.width/2, cy=w.height/2;
-    off=tiles.map((t,i)=>{const x=w.width-((i%cols)+.5)*s, y=(Math.floor(i/cols)+.5)*s; return [cx-x,cy-y];});
-  }
-  function frame(){
-    const r=sec.getBoundingClientRect(), span=r.height-innerHeight;
-    const p=Math.min(1,Math.max(0,-r.top/span));
-    tiles.forEach((t,i)=>{
-      const d=ease(Math.min(1,Math.max(0,(p-(i%7)*.012)/.6)));
-      t.style.transform=`translate(${off[i][0]*d}px,${off[i][1]*d}px) scale(${1+d*2})`;
-      t.style.opacity=(1-d*.94).toFixed(3);
-    });
-    mean.style.opacity=Math.min(1,Math.max(0,(p-.55)/.3)).toFixed(3);
-    const s=p>.72?1:0;
-    if(s!==state){state=s;
-      if(s){now.textContent='ממוצע אחד. חמים, לפי המכונה.';count.textContent='n=1';}
-      else{now.innerHTML=first;count.textContent='n=30';}}
-  }
-  measure(); frame();
-  addEventListener('resize',()=>{measure();frame();},{passive:true});
-  addEventListener('scroll',()=>requestAnimationFrame(frame),{passive:true});
-})();
 </script>
 </body>
 </html>
