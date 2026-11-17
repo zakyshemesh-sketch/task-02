@@ -68,7 +68,7 @@ section{position:relative}
 .block-y{padding-block:clamp(72px,11vw,160px)}
 
 /* ---------- hero ---------- */
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:min(calc(100svh - 50px),50vw);align-items:stretch}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:min(100svh,50vw);align-items:stretch}
 .hero-text{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(48px,7vw,110px) var(--m) var(--m)}
 .hero-text .display{font-size:clamp(40px,5.3vw,92px)}
 .hero-text .display .l{white-space:nowrap}
@@ -152,11 +152,6 @@ section{position:relative}
 </style>
 </head>
 <body>
-
-<header class="mast">
-  <span dir="ltr">Corpus: The Client Said</span>
-  <span>צחי שמש · HIT · 2026</span>
-</header>
 
 <!-- ============ HERO ============ -->
 <section class="hero" aria-labelledby="t">
